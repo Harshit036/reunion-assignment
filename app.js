@@ -61,9 +61,13 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 });
 
+const passwordDB = "Harshit01%40";
+
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(`mongodb://localhost:27017/reunion`)
+  .connect(
+    `mongodb+srv://HarshitVaish:${passwordDB}@reunion.pqpojqy.mongodb.net/reunion?retryWrites=true&w=majority`
+  )
   .then(() => {
     const port = process.env.PORT || 5000;
     app.listen(port, () => {
